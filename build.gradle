@@ -16,3 +16,10 @@
     task clean (type: Delete) {
         delete rootProject.buildDir
     }
+
+ext.coroutine_version = "1.5.1"
+ext.lifecycle_version = "2.4.0"
+ext.nav_version = "2.3.5"
+ext.kotlin_version = '1.5.0'
+ext.koin_version = '3.1.2'
+ext.roomVersion = "2.4.1"
