@@ -1,4 +1,4 @@
-package com.bilal.movies.data.datasources.remote.movies
+package com.bilal.movies.data.datasources.movies.remote
 
 import com.bilal.movies.domain.models.DiscoverMoviesAPIResponse
 import retrofit2.Call

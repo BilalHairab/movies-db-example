@@ -1,11 +1,10 @@
-package com.bilal.movies.data.datasources.local
+package com.bilal.movies.data.datasources.movies.local
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.bilal.movies.data.custom.MovieInDB
-import com.bilal.movies.data.datasources.local.movie.MoviesDao
 
 /**
  * Created by Bilal Hairab on 02/02/2022.
@@ -13,7 +12,7 @@ import com.bilal.movies.data.datasources.local.movie.MoviesDao
 @Database(entities = [MovieInDB::class], version = 1)
 abstract class AppDatabase : RoomDatabase() {
 
-    abstract fun moviesDao(): MoviesDao
+    abstract fun moviesDao(): MoviesLocalDao
 
     companion object {
 

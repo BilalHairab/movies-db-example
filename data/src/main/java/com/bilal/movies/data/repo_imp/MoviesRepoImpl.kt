@@ -1,7 +1,7 @@
 package com.bilal.movies.data.repo_imp
 
-import com.bilal.movies.data.datasources.local.movie.MoviesLocalDataSource
-import com.bilal.movies.data.datasources.remote.movies.LoadMoviesFromServerService
+import com.bilal.movies.data.datasources.movies.local.MoviesLocalDataSource
+import com.bilal.movies.data.datasources.movies.remote.LoadMoviesFromServerService
 import com.bilal.movies.domain.base.DataHolder
 import com.bilal.movies.domain.models.Movie
 import com.bilal.movies.domain.repos.IMovieRepo

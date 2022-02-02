@@ -5,6 +5,7 @@ package com.bilal.movies.data
  */
 val urls = mapOf(
     baseMoviesUrl.value to "https://api.themoviedb.org/3/",
+    baseImagesUrl.value to "https://image.tmdb.org/t/p/w500/",
 )
 val keys = mapOf(
     baseMoviesUrlAPIKey.value to "114fe6670282f6a632638661e5e86dee",

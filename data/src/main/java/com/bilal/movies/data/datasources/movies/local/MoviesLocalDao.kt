@@ -1,4 +1,4 @@
-package com.bilal.movies.data.datasources.local.movie
+package com.bilal.movies.data.datasources.movies.local
 
 import androidx.room.Dao
 import androidx.room.Insert
@@ -10,7 +10,7 @@ import com.bilal.movies.domain.models.Movie
  * Created by Bilal Hairab on 02/02/2022.
  */
 @Dao
-interface MoviesDao : MoviesLocalDataSource{
+interface MoviesLocalDao : MoviesLocalDataSource {
     @Query("SELECT * FROM movies WHERE category IS (:category) LIMIT :pageSize OFFSET :pageIndex")
     override fun loadMovies(category: String, pageSize: Int, pageIndex: Int): List<MovieInDB>
 

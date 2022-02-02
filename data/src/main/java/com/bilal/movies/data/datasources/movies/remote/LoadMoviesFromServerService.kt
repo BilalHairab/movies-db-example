@@ -1,4 +1,4 @@
-package com.bilal.movies.data.datasources.remote.movies
+package com.bilal.movies.data.datasources.movies.remote
 
 import com.bilal.movies.domain.base.DataHolder
 import com.bilal.movies.domain.base.ResultError

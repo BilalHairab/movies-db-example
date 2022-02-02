@@ -1,4 +1,4 @@
-package com.bilal.movies.data.datasources.local.movie
+package com.bilal.movies.data.datasources.movies.local
 
 import com.bilal.movies.data.custom.MovieInDB
 import com.bilal.movies.domain.models.Movie
