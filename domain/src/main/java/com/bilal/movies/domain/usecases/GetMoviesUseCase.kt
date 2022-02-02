@@ -13,7 +13,7 @@ class GetMoviesParams(val query: String, val page: Int)
 class GetMoviesUseCase internal constructor(private val moviesRepo: IMovieRepo) :
     BaseUseCase<GetMoviesParams>(moviesRepo) {
 
-    override suspend fun execute(params: GetMoviesParams): DataHolder<List<Movie>> {
+    override suspend fun execute(params: GetMoviesParams): DataHolder<Array<Movie>> {
         return moviesRepo.loadMovies(params.query, params.page)
     }
 }
