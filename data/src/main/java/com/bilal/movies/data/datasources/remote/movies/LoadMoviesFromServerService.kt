@@ -1,4 +1,4 @@
-package com.bilal.movies.data.datasources.remote.weather
+package com.bilal.movies.data.datasources.remote.movies
 
 import com.bilal.movies.domain.base.DataHolder
 import com.bilal.movies.domain.base.ResultError
@@ -9,7 +9,7 @@ import com.bilal.movies.domain.models.Movie
  */
 @Suppress("BlockingMethodInNonBlockingContext")
 class LoadMoviesFromServerService internal constructor(
-    private val api: LoadMoviesRemotelyAPI,
+    private val api: MoviesAPI,
     private val apiKey: String
 ) {
     fun loadMovies(query: String, page: Int): DataHolder<Array<Movie>> {

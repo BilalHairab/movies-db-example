@@ -8,12 +8,12 @@ import com.bilal.movies.domain.repos.IMovieRepo
 /**
  * Created by Bilal Hairab on 02/02/2022.
  */
-class GetMoviesParams(val query: String, val page: Int)
+class GetMoviesParams(val query: String, val pageSize: Int, val pageIndex: Int)
 
 class GetMoviesUseCase internal constructor(private val moviesRepo: IMovieRepo) :
     BaseUseCase<GetMoviesParams>(moviesRepo) {
 
-    override suspend fun execute(params: GetMoviesParams): DataHolder<Array<Movie>> {
-        return moviesRepo.loadMovies(params.query, params.page)
+    override suspend fun execute(params: GetMoviesParams): DataHolder<ArrayList<Movie>> {
+        return moviesRepo.loadMovies(params.query, params.pageSize, params.pageIndex)
     }
 }

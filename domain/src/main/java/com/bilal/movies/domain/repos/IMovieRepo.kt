@@ -7,6 +7,6 @@ import com.bilal.movies.domain.models.Movie
 /**
  * Created by Bilal Hairab on 02/02/2022.
  */
-interface IMovieRepo : BaseRepository{
-    suspend fun loadMovies(query: String, page: Int): DataHolder<Array<Movie>>
+interface IMovieRepo : BaseRepository {
+    suspend fun loadMovies(query: String, pageSize: Int, pageIndex: Int): DataHolder<ArrayList<Movie>>
 }

@@ -1,4 +1,4 @@
-package com.bilal.movies.data.datasources.remote.weather
+package com.bilal.movies.data.datasources.remote.movies
 
 import com.bilal.movies.domain.models.DiscoverMoviesAPIResponse
 import retrofit2.Call
@@ -8,7 +8,7 @@ import retrofit2.http.Query
 /**
  * Created by Bilal Hairab on 02/02/2022.
  */
-interface LoadMoviesRemotelyAPI {
+interface MoviesAPI {
     @GET("discover/movie")
     fun getMovies(
         @Query("api_key") key: String,
