@@ -25,10 +25,13 @@ class MoviesRepoImpl internal constructor(
         if (missingItemsCount == 0) {
             return DataHolder.Success(cachedMovies)
         }
-        val remoteMovies = (api.loadMovies(query, pageIndex) as DataHolder.Success).data.takeLast(missingItemsCount)
-        remoteMovies.forEach {
-            db.addMovie(MovieInDB(query, it))
-            cachedMovies.add(it)
+        val remoteTask = api.loadMovies(query, pageIndex)
+        if (remoteTask is DataHolder.Success) {
+            val remoteMovies = remoteTask.data.takeLast(missingItemsCount)
+            remoteMovies.forEach {
+                db.addMovie(MovieInDB(query, it))
+                cachedMovies.add(it)
+            }
         }
         return DataHolder.Success(cachedMovies)
     }

@@ -51,11 +51,12 @@ class MovieDetailFragment : Fragment() {
             withContext(Dispatchers.Main) {
                 imageTaskResult.let {
                     when {
-                        (it is DataHolder.Fail).or(
-                            (it is DataHolder.Success).and(
-                                (it as DataHolder.Success).data.isEmpty()
-                            )
-                        ) -> {
+                        (it is DataHolder.Fail) -> {
+                            view.setImageResource(R.drawable.error)
+                        }
+                        (it is DataHolder.Success).and(
+                            (it as DataHolder.Success).data.isEmpty())
+                        -> {
                             view.setImageResource(R.drawable.error)
                         }
                         else -> {

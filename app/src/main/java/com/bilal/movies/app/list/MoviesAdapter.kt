@@ -50,11 +50,12 @@ class MoviesAdapter(private val onItemClicked: ItemClicked?) :
                 withContext(Dispatchers.Main) {
                     imageTaskResult.let {
                         when {
-                            (it is DataHolder.Fail).or(
-                                (it is DataHolder.Success).and(
-                                    (it as DataHolder.Success).data.isEmpty()
-                                )
-                            ) -> {
+                            (it is DataHolder.Fail) -> {
+                                holder.movieImageView.setImageResource(R.drawable.error)
+                            }
+                            (it is DataHolder.Success).and(
+                                (it as DataHolder.Success).data.isEmpty())
+                            -> {
                                 holder.movieImageView.setImageResource(R.drawable.error)
                             }
                             else -> {

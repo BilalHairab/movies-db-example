@@ -13,16 +13,21 @@ class LoadMoviesFromServerService internal constructor(
     private val apiKey: String
 ) {
     fun loadMovies(query: String, page: Int): DataHolder<Array<Movie>> {
-        val apiCall = api.getMovies(apiKey, query, page).execute()
-        val response = apiCall.body()
-        response?.run {
-            if (apiCall.isSuccessful) {
-                return if (this.results.isNullOrEmpty()) {
-                    DataHolder.Success(arrayOf())
-                } else
-                    DataHolder.Success(this.results!!)
+        try {
+            val apiCall = api.getMovies(apiKey, query, page).execute()
+            val response = apiCall.body()
+            response?.run {
+                if (apiCall.isSuccessful) {
+                    return if (this.results.isNullOrEmpty()) {
+                        DataHolder.Success(arrayOf())
+                    } else
+                        DataHolder.Success(this.results!!)
+                }
             }
+            return DataHolder.Fail(ResultError.UNKNOWN_ERROR_WITH_SERVER)
+        } catch (e: Exception) {
+            e.printStackTrace()
+            return DataHolder.Fail(ResultError.UNKNOWN_ERROR_WITH_SERVER)
         }
-        return DataHolder.Fail(ResultError.UNKNOWN_ERROR_WITH_SERVER)
     }
 }
