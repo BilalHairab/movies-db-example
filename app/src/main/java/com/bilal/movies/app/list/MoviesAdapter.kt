@@ -49,20 +49,13 @@ class MoviesAdapter(private val onItemClicked: ItemClicked?) :
                 val imageTaskResult = loadImageUseCase.execute(LoadImageParams(this))
                 withContext(Dispatchers.Main) {
                     imageTaskResult.let {
-                        when {
-                            (it is DataHolder.Fail) -> {
-                                holder.movieImageView.setImageResource(R.drawable.error)
-                            }
-                            (it is DataHolder.Success).and(
-                                (it as DataHolder.Success).data.isEmpty())
-                            -> {
-                                holder.movieImageView.setImageResource(R.drawable.error)
-                            }
-                            else -> {
+                        if (it is DataHolder.Success) {
+                            if (it.data.isNotEmpty()) {
                                 holder.movieImageView.setImageBitmap(it.data.toBitmap())
                             }
                         }
                     }
+
                 }
             }
         }

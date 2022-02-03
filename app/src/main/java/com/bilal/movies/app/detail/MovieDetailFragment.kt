@@ -7,9 +7,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import com.bilal.movies.R
-import com.bilal.movies.databinding.FragmentMovieDetailBinding
 import com.bilal.movies.data.toBitmap
+import com.bilal.movies.databinding.FragmentMovieDetailBinding
 import com.bilal.movies.domain.base.DataHolder
 import com.bilal.movies.domain.usecases.LoadImageParams
 import com.bilal.movies.domain.usecases.LoadImageUseCase
@@ -50,16 +49,8 @@ class MovieDetailFragment : Fragment() {
             val imageTaskResult = loadImageUseCase.execute(LoadImageParams(imageID))
             withContext(Dispatchers.Main) {
                 imageTaskResult.let {
-                    when {
-                        (it is DataHolder.Fail) -> {
-                            view.setImageResource(R.drawable.error)
-                        }
-                        (it is DataHolder.Success).and(
-                            (it as DataHolder.Success).data.isEmpty())
-                        -> {
-                            view.setImageResource(R.drawable.error)
-                        }
-                        else -> {
+                    if (it is DataHolder.Success) {
+                        if (it.data.isNotEmpty()) {
                             view.setImageBitmap(it.data.toBitmap())
                         }
                     }
@@ -67,5 +58,4 @@ class MovieDetailFragment : Fragment() {
             }
         }
     }
-//    }
 }
