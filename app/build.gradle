@@ -8,7 +8,7 @@ android {
     compileSdk 31
 
     defaultConfig {
-        applicationId "com.bilal.movies.app"
+        applicationId "com.bilal.movies"
         minSdk 24
         targetSdk 31
         versionCode 1

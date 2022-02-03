@@ -39,21 +39,9 @@ class MovieDetailFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        loadImage(binding.itemIv, itemSelectionViewModel.selectedMovieLiveData.value?.poster_path)
+        loadImage(binding.itemIv, itemSelectionViewModel.selectedMovieLiveData.value?.backdrop_path)
     }
-//    @BindingMethods(
-//        value = [
-//            BindingMethod(
-//                type = ImageView::class,
-//                attribute = "android:src",
-//                method = "loadImage"
-//            )]
-//    )
 
-    //    companion object {
-//
-//        @JvmStatic
-//        @BindingAdapter("android:src")
     fun loadImage(view: ImageView, imageID: String?) {
         if (imageID == null) {
             return

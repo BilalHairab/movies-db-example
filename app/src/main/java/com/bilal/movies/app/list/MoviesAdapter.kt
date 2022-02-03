@@ -45,7 +45,7 @@ class MoviesAdapter(private val onItemClicked: ItemClicked?) :
             onItemClicked?.onItemClicked(it, movieItem)
         }
         GlobalScope.launch(Dispatchers.IO) {
-            movieItem.poster_path?.run {
+            movieItem.backdrop_path?.run {
                 val imageTaskResult = loadImageUseCase.execute(LoadImageParams(this))
                 withContext(Dispatchers.Main) {
                     imageTaskResult.let {

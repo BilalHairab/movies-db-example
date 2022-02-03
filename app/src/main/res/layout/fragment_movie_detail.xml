@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:cardview="http://schemas.android.com/apk/res-auto">
+
     <data>
+
         <variable
             name="movieViewModel"
             type="com.bilal.movies.app.detail.SharedSelectedMovieViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:cardview="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".detail.MovieDetailFragment">
@@ -40,16 +42,29 @@
                     cardview:layout_constraintStart_toStartOf="parent"
                     cardview:layout_constraintTop_toTopOf="parent" />
 
+                <TextView
+                    android:id="@+id/movieTitle_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:text="@{String.valueOf(movieViewModel.selectedMovieLiveData.title)}"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Title"
+                    cardview:layout_constraintEnd_toEndOf="parent"
+                    cardview:layout_constraintHorizontal_bias="0.0"
+                    cardview:layout_constraintStart_toStartOf="parent"
+                    cardview:layout_constraintTop_toBottomOf="@+id/item_iv"
+                    tools:text="Movie Name" />
+
                 <LinearLayout
                     android:id="@+id/rating_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
                     android:orientation="horizontal"
-                    cardview:layout_constraintBottom_toBottomOf="parent"
                     cardview:layout_constraintEnd_toEndOf="parent"
                     cardview:layout_constraintStart_toStartOf="parent"
-                    cardview:layout_constraintTop_toTopOf="parent">
+                    cardview:layout_constraintTop_toBottomOf="@+id/movieTitle_tv">
 
                     <TextView
                         android:id="@+id/movieRating_tv"
@@ -65,7 +80,6 @@
                     <ImageView
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        android:numStars="10"
                         android:src="@drawable/ic_baseline_star_rate_24" />
                 </LinearLayout>
 
@@ -73,13 +87,12 @@
                     android:id="@+id/movieOverview_tv"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginEnd="8dp"
                     android:text="@{String.valueOf(movieViewModel.selectedMovieLiveData.overview)}"
                     android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"
                     cardview:layout_constraintEnd_toEndOf="parent"
                     cardview:layout_constraintStart_toStartOf="parent"
                     cardview:layout_constraintTop_toBottomOf="@+id/rating_layout"
+                    android:padding="8dp"
                     tools:text="Overview" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>

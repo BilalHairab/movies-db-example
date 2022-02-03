@@ -11,14 +11,14 @@ class FileInternalStorageDataSource internal constructor(private val application
     fun saveFileCache(fileName: String, byteArray: ByteArray) {
         val imageFile = File(applicationContext.cacheDir, fileName)
         imageFile.createNewFile()
-        applicationContext.openFileOutput(fileName, Context.MODE_PRIVATE).use { fos ->
+        applicationContext.openFileOutput(fileName.dropWhile { it == '/' }, Context.MODE_PRIVATE).use { fos ->
             fos.write(byteArray)
         }
     }
 
     fun loadFileCache(fileName: String): ByteArray {
-        return if (File(applicationContext.cacheDir, fileName).exists()) {
-            val inputStream = applicationContext.openFileInput(fileName)
+        return if (File(applicationContext.cacheDir, fileName.dropWhile { it == '/' }).exists()) {
+            val inputStream = applicationContext.openFileInput(fileName.dropWhile { it == '/' })
             val result = inputStream.readBytes()
             inputStream.close()
             result

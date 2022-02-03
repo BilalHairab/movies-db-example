@@ -10,7 +10,7 @@ class LoadImagesFromServerService internal constructor(
     private val api: ImagesAPI,
 ) {
     fun loadImage(imageId: String): DataHolder<ByteArray> {
-        val apiCall = api.getImage(imageId).execute()
+        val apiCall = api.getImage("t/p/w500$imageId").execute()
         val inputStream = apiCall.body()?.byteStream()
         val result = inputStream?.readBytes()
         inputStream?.close()
