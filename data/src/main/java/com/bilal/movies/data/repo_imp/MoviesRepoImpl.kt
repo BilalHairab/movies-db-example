@@ -1,5 +1,6 @@
 package com.bilal.movies.data.repo_imp
 
+import com.bilal.movies.data.custom.MovieInDB
 import com.bilal.movies.data.datasources.movies.local.MoviesLocalDataSource
 import com.bilal.movies.data.datasources.movies.remote.LoadMoviesFromServerService
 import com.bilal.movies.domain.base.DataHolder
@@ -26,7 +27,7 @@ class MoviesRepoImpl internal constructor(
         }
         val remoteMovies = (api.loadMovies(query, pageIndex) as DataHolder.Success).data.takeLast(missingItemsCount)
         remoteMovies.forEach {
-            db.addMovie(it)
+            db.addMovie(MovieInDB(query, it))
             cachedMovies.add(it)
         }
         return DataHolder.Success(cachedMovies)

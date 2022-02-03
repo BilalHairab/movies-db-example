@@ -15,5 +15,5 @@ interface MoviesLocalDao : MoviesLocalDataSource {
     override fun loadMovies(category: String, pageSize: Int, pageIndex: Int): List<MovieInDB>
 
     @Insert
-    override fun addMovie(movie: Movie)
+    override fun addMovie(movie: MovieInDB)
 }

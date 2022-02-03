@@ -4,7 +4,7 @@ package com.bilal.movies.domain.models
  * Created by Bilal Hairab on 02/02/2022.
  */
 class Movie constructor(
-    var poster_path: String?,
+    var poster_path: String,
     var adult: Boolean?,
     var overview: String?,
     var release_date: String?,

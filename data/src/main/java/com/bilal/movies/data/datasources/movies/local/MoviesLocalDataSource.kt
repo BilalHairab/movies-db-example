@@ -9,5 +9,5 @@ import com.bilal.movies.domain.models.Movie
 interface MoviesLocalDataSource {
     fun loadMovies(category: String, pageSize: Int, pageIndex: Int): List<MovieInDB>
 
-    fun addMovie(movie: Movie)
+    fun addMovie(movie: MovieInDB)
 }

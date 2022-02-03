@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">app</string>
+    <string name="popular_header">Popular Movies</string>
+    <string name="rated_header">Top Rated Movies</string>
+    <string name="revenue_header">Revenue Movies</string>
+    <string name="movies_title">Movies</string>
 </resources>
